@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Rubi Beauty Parlour - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #fce4ec, #f8bbd0);
+            color: #4a4a4a;
+        }
+
+        header {
+            background-color: #c2185b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 30px;
+        }
+
+        .gallery img {
+            width: 280px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .appointment-form {
+            background-color: #fff0f6;
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointment-form h2 {
+            text-align: center;
+            color: #ad1457;
+            margin-bottom: 20px;
+        }
+
+        .appointment-form input,
+        .appointment-form select,
+        .appointment-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #f48fb1;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .appointment-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #c2185b;
+            color: white;
+            border: none;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .appointment-form button:hover {
+            background-color: #ad1457;
+        }
+
+        .thank-you-message {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 15px;
+            background-color: #f8bbd0;
+            text-align: center;
+            font-size: 20px;
+            color: #c2185b;
+            font-weight: 700;
+            box-shadow: 0 6px 20px rgba(194, 24, 91, 0.3);
+        }
+
+        .contact-info {
+            background-color: #c2185b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 16px;
+            margin-top: 40px;
+        }
+
+        .contact-info p {
+            margin: 6px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        Welcome to Rubi Beauty Parlour
+    </header>
+
+    <section class="gallery">
+        <img src="images/Ficial.jpg.jpg" alt="Facial" />
+        <img src="images/bridal.jpg.jpg" alt="Bridal" />
+        <img src="images/Facemask.jpg.webp" alt="Facemask" />
+        <img src="images/HairWash.jpg.jpg" alt="HairWash" />
+        <img src="images/base.jpg.jpg" alt="Parlour Products" />
+        <img src="images/download (2).jpg" alt="Eyebrow" />
+        <img src="images/Waiting Area 1.jpg.jpg" alt="Waiting Area" />
+        <img src="images/Bridal2.jpg.jpg" alt="Bridal 2" />
+    </section>
+
+    <section class="appointment-form" id="appointmentSection">
+        <h2>Book an Appointment</h2>
+        <form id="bookingForm" onsubmit="submitAppointment(event)">
+            <input type="text" id="name" placeholder="Your Name" required />
+            <input type="tel" id="phone" placeholder="Phone Number" required />
+            <input type="date" id="date" required />
+            <select id="service" required>
+                <option value="">Select Service</option>
+                <option>Facial</option>
+                <option>Mehndi</option>
+                <option>Hair Styling</option>
+                <option>Makeup</option>
+                <option>Waxing</option>
+                <option>Bridal Package</option>
+            </select>
+            <textarea id="note" placeholder="Any special note..." rows="3"></textarea>
+            <button type="submit">Book Now</button>
+        </form>
+    </section>
+
+    <section class="thank-you-message" id="thankYouMessage" style="display:none;">
+        Thanks For Booking Appointment By Rubi Beauty Saloon
+    </section>
+
+    <section class="contact-info">
+        <p><strong>Contact Us</strong></p>
+        <p>Main Bazzar, Ali Pur</p>
+        <p>Phone: 033979554</p>
+        <p>Email: rubibeautyparlour@gmail.com</p>
+    </section>
+
+    <script>
+        function submitAppointment(event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+            const date = document.getElementById("date").value;
+            const service = document.getElementById("service").value;
+
+            if (!name || !phone || !date || !service) {
+                alert("Please fill all fields.");
+                return;
+            }
+
+            // Hide the form
+            document.getElementById("appointmentSection").style.display = "none";
+
+            // Show thank you message
+            const thankYou = document.getElementById("thankYouMessage");
+            thankYou.style.display = "block";
+
+            // You can reset form here if needed for future use
+            document.getElementById("bookingForm").reset();
+        }
+    </script>
+</body>
+
+</html>
